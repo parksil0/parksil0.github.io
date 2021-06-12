@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "순환(Recursion)"
+title: "[알고리즘]순환(Recursion)"
 subtitle: "알고리즘의 기초인 순환에 대해 알아보았습니다."
 date: 2021-03-01 01:00:00 +0800
 ---

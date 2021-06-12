@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Counting Cells in a Blob"
+title: "[알고리즘]Counting Cells in a Blob"
 subtitle: "순환을 사용하여 알고리즘을 풀어봅니다."
 date: 2021-06-11 23:17:00 +0800
 ---
