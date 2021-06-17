@@ -21,14 +21,19 @@ let myNameClass = new User("Seal Park"); // 객체 생성
 console.log(myNameClass.name); // get 메소드 호출 : Seal Park
 
 // object 타입으로 객체를 생성하여 this를 실행시켜본다.
-let myNameObj = {
+let myName = {
   name: 'Slias Park',
   greeting() {
     console.log(`hi! ${this.name}`);
+  },
+  foo() {
+    return this;
   }
 }
 
-myNameObj.greeting(); // hi! Slias Park
+myName.greeting(); // hi! Slias Park
+
+console.log(myName.foo());
 
 
 /*
@@ -41,10 +46,19 @@ let myProfile = {
   name: 'Seal Park'
 }
 
+let myGirlfriendProfile = {
+  age: 33,
+  name: 'ryeoni'
+}
+
 // 이름을 출력하는 함수를 생성하였다.
 const printAge = function() {
   console.log(this.age);
 }
+
+myGirlfriendProfile.printAge = printAge;
+
+myGirlfriendProfile.printAge();
 
 // 이름을 출력하는 함수지만 화살표 함수로 생성하였다.
 const printAgeArrow = () => console.log(this.age);
