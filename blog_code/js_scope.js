@@ -90,3 +90,17 @@ function sayHello(name) {
 }
 
 sayHello("Slias")
+
+/**
+ * 아래는 외부 렉시컬 환경에서 값을 가져오지 않고, 블럭 내의 에러를 던진다.
+ * 변수가 일시적으로 사용할 수 없는 영역(코드 블록 시작부터 let까지)을 "데드 존(dead zone)"이라고도 한다.
+ * */ 
+
+let x = 1;
+
+function func() {
+  console.log(x); // ReferenceError: Cannot access 'x' before initialization
+  let x = 2;
+}
+
+func();
