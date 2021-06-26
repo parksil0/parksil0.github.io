@@ -24,3 +24,42 @@ var add10 = makeAdder(10);
 console.log(add5(2));  // 107 (x:5 + y:100 + z:2)
 console.log(add10(2)); // 112 (x:10 + y:100 + z:2)
 //함수 실행 시 클로저에 저장된 x, y값에 접근하여 값을 계산
+
+/**
+ * 클로저를 이용한 카운터 예제
+ * 두 개의 카운터가 어떻게 다른 카운터와 독립성을 유지하는지 주목해보자. 
+ * 각 클로저는 그들 고유의 클로저를 통한 privateCounter 변수의 다른 버전을 참조한다. 
+ * 각 카운터가 호출될 때마다; 하나의 클로저에서 변수 값을 변경해도 다른 클로저의 값에는 영향을 주지 않는다.
+ * 이런 방식으로 클로저를 사용하여 객체지향 프로그래밍의 정보 은닉과 캡슐화 같은 이점들을 얻을 수 있다.
+ * 
+ * 이처럼 자바스크립트의 클로저를 이용하면 자바와 같은 몇몇 언어들의 메소드를 프라이빗으로 선언할 수 있는 기능을 사용할 수 있다.
+ * 이는 같은 클래스 내부의 다른 메소드에서만 그 메소드들을 호출할 수 있다는 의미와 비슷한 맥락이다.
+ */
+
+var makeCounter = function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  }
+};
+
+var counter1 = makeCounter();
+var counter2 = makeCounter();
+console.log(counter1.value()); //0
+counter1.increment();
+counter1.increment();
+console.log(counter1.value()); //2
+counter1.decrement();
+console.log(counter1.value()); //1
+console.log(counter2.value()); //0
