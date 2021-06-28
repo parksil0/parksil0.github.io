@@ -24,7 +24,7 @@ console.log(i); // 10
  * 하지만 함수의 범위에 벗어나면, 사용할 수 없다.
  */
 
-function sayHi() {
+function printMyName() {
   if (true) {
     var myName = "Slias";
   }
@@ -32,7 +32,7 @@ function sayHi() {
   console.log(myName); // Slias
 }
 
-sayHi();
+printMyName();
 console.log(myName); // Error: myName is not defined
 
 /**
@@ -41,25 +41,25 @@ console.log(myName); // Error: myName is not defined
  * 함수 본문 내에서 var로 선언한 변수는 선언 위치와 상관없이 함수 본문이 시작되는 지점에서 정의된다(단, 변수가 중첩 함수 내에서 정의되지 않아야 이 규칙이 적용된다).
  */
 
-function sayHi() {
-  food = "Bibimbob";
+function greeting() {
+  hello = "Hello!";
 
-  console.log(food);
+  console.log(hello);
 
-  var food;
+  var hello;
 }
-sayHi();
+greeting();
 
-// 위의 예제는 아래의 예제와 동일하게 작동한다.
+// 위의 예제는 아래의 예제와 동일하게 동작한다.
 
-function sayHi() {
-  var food;
+function greeting2() {
+  var hello2;
 
-  food = "Bibimbob";
+  hello2 = "Hello!2";
 
-  console.log(food);
+  console.log(hello2);
 }
-sayHi();
+greeting2();
 
 /**
  * 이렇게 변수가 끌어올려 지는 현상을 '호이스팅(hoisting)'이라고 부른다. 
