@@ -125,6 +125,49 @@ var printMyBloodType = function() {
 
 그이유는 그 아래 줄의 `var printMyBloodType` 가 변수이기 때문입니다. 이는 '선언과 할당'의 분리가 발생한 것입니다. 순셔는 `var printMyBloodType` 가 먼저 선언되고, 그 다음 `printMyBloodType()` 가 호출 되지만 아직 함수는 할당되지 않은 상태입니다. 그리고나서 `var printMyBloodType` 에 함수가 정의됩니다. 그러므로 위의 코드에서는 에러가 발생한 것입니다.
 
+## 변수, 함수 우선순위
+
+var와 함수를 선언하면 해당 스코프의 최 상단으로 호이스팅이 되는것을 알아보았습니다. 그렇다면 둘을 동시에 선언했을 때 어떤것이 우선하여 선언될까요? 아래의 코드를 통해 알아보겠습니다.
+
+```jsx
+var firstName = "Park";
+
+function firstName() {
+  console.log("Park");
+}
+
+function lastName() {
+  console.log("Seal");
+}
+
+var lastName = "Seal";
+
+// 1번
+console.log(typeof firstName); // string
+console.log(typeof lastName); // string
+```
+
+1번을 보면 `firstName`과 `lastName` 둘 다 `string`타입임을 알 수 있습니다. 이는 변수가 함수보다 우선하여 호이스팅이 일어남을 알 수 있습니다. 위의 코드를 호이스팅이 되어 변환된 코드로 보자면, 아래와 같습니다.
+
+```jsx
+var firstName;
+var lastName;
+
+function firstName() {
+  console.log("Park");
+}
+
+function lastName() {
+  console.log("Seal");
+}
+
+firstName = "Park";
+lastName = "Seal";
+
+console.log(typeof firstName); // string
+console.log(typeof lastName); // string
+```
+
 ## 참고
 
 [https://yuddomack.tistory.com/entry/자바스크립트-호이스팅Hoisting](https://yuddomack.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85Hoisting)
