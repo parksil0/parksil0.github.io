@@ -73,7 +73,7 @@ console.log(fooBar()); // hi! hello!
 
 ## 렉시컬 환경(Lexical Environment)
 
-렉시컬(lexical)은 '어휘의' 라는 뜻을 가진 단어입니다. 지금까지 위에서 설명한 내용을 보면, 변수가 어디에서 사용 가능한지, 어디에서 선언 되었는지에 따라 어떤 결과를 나타내는지 예제를 통해 알아 보았는데요, 이를 렉시컬이라고 합니다. 지금까지 알아본 바로는 중첩 함수에서 외부 범위의 변수를 사용할 수 있었죠? 이를 유념하고 렉시컬 환경에 대한 설명 시작하겠습니다!
+렉시컬(lexical)은 '어휘의' 라는 뜻을 가진 단어입니다. 지금까지 위에서 설명한 내용을 보면, 변수가 어디에서 사용 가능한지, 어디에서 선언 되었는지에 따라 어떤 결과를 나타내는지 예제를 통해 알아 보았는데요, 이를 렉시컬이라고 합니다. 지금까지 알아본 바로는 함수 블록 내에서 외부 스코프의 변수를 사용할 수 있었죠? 이를 유념하고 렉시컬 환경에 대한 설명 시작하겠습니다!
 
 렉시컬 환경(lexical environment)은 '어휘적 환경'이라고도 부르기도 하는데, 이는 내부 숨김 연관 객체(internal hidden associated object)를 갖습니다.
 
@@ -105,8 +105,7 @@ greeting("seal"); // hello! seal!
 
 이번에는 함수 `greeting()`의 관점으로 볼까요? `greeting()`은 함수이므로 블록을 갖습니다. 블록 안의 스코프는 지역 스코프이므로 전역 렉시컬 환경에서 `greeting()`의 블록 내부는 내부 렉시컬 환경이고, `greeting()` 내부에서 전역 스코프는 외부 렉시컬 환경입니다. `greeting()`의 렉시컬 환경을 보면 `name`이 있고, 외부는 전역이기 때문에 `hello`, `greeting`이 있습니다. 전역 스코프에서 외부는 없으니 외부 렉시컬 참조가 없기 때문에 `null`입니다.
 
-맨 마지막 줄은 `greeting("seal")`을 호출합니다. `greeting()`함수의 구현부를 보면, `name` 외에 `hello`라는 변수를 확인할 수 있습니다. 이는 내부 렉시컬 환경에 없습니다. 만약 내부 렉시컬 환경에 없다면 외부 렉시컬 환경에서 자동으로 찾도록 합니다. 전역 렉시컬 환경에 도달할 때까지 변수를 찾지 못하면 엄격 모드에선 에러가 발생합니다. 참고로 비 엄격 모드에선 정의되지 않은 변수에 값을 할당하려고 하면 에러가 발생하는 대신 새로운 전역 변수가 만들어지는데, 이는 하위 호환성을 위해 남아있는 기능입니다.
-
+맨 마지막 줄 `greeting("seal")`을 호출합니다. `greeting()`함수의 구현부를 보면, `name` 외에 `hello`라는 변수를 확인할 수 있습니다. 이는 내부 렉시컬 환경에 없습니다. 만약 내부 렉시컬 환경에 없다면 외부 렉시컬 환경에서 자동으로 찾도록 합니다. 전역 렉시컬 환경에 도달할 때까지 변수를 찾지 못하면 엄격 모드에선 에러가 발생합니다.
 위의 소스코드를 정리하자면, `greeting()`내부에 선언되지 않은 변수 `hello`가 있습니다 그래서 외부 렉시컬 환경에서 `hello`를찾아 출력하는 흐름입니다.
 
 ## 클로저
@@ -172,9 +171,9 @@ console.log(counter()); // 3
 </html>
 ```
 
-위는 현재 상태를 기억하고 변경된 최신 상태를 유지하도록 클로저를 사용한 예제입니다. 위의 코드 중 1번을 보면 toggle은 즉시 실행 함수(IIFE)를 사용하여 반환하였습니다. 2번을 보면 함수를 리턴합니다. 내용 안에는 isShow라는 변수를 이용하여 box 요소의 상태를 조작합니다. 그리고 마지막 3번을 보면 toggle을 이벤트 프로퍼티에 할당하는 것까지 확인할 수 있습니다.
+위는 현재 상태를 기억하고 변경된 최신 상태를 유지하도록 클로저를 사용한 예제입니다. 위의 코드 중 1번을 보면 `toggle()`은 즉시 실행 함수(IIFE)를 사용하여 반환하였습니다. 2번을 보면 함수를 리턴합니다. 내용 안에는 `isShow`라는 변수를 이용하여 box 요소의 상태를 조작합니다. 그리고 마지막 3번을 보면 `toggle()`을 이벤트 프로퍼티에 할당하는 것까지 확인할 수 있습니다.
 
-여기서 중요한건 바로 isShow의 상태입니다. 클로저를 이용하면 `[[Environment]]`을 통해 프로퍼티 값을 기억할 수 있습니다. 이는 최신 상태를 유지할 수 있는데요, 이와 같은 예제가 실제 클로저가 사용되는 예제입니다.
+여기서 중요한건 바로 `isShow`의 상태입니다. 클로저를 이용하면 `[[Environment]]`을 통해 프로퍼티 값을 기억할 수 있습니다. 이는 최신 상태를 유지할 수 있는데요, 이와 같은 예제가 실제 클로저가 사용되는 예제입니다.
 
 ### 예제 2
 
@@ -212,23 +211,49 @@ console.log(counter.value()); // logs 1
 ### 예제 3
 
 ```jsx
-for (var i = 0; i < 5; i++) {
-	document.querySelector("#target" + i).onclick = function() {
-		alert(i);
-	}
-}
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="target0">Click Me 0</button>
+  <button id="target1">Click Me 1</button>
+  <button id="target2">Click Me 2</button>
+  <button id="target3">Click Me 3</button>
+  <button id="target4">Click Me 4</button>
+
+  <script>
+    for (var i = 0; i < 5; i++) {
+      document.querySelector("#target" + i).onclick = function() {
+        alert(i);
+      }
+    }  
+  </script>
+</body>
+</html>
 ```
 
 위는 for문 안에 함수를 사용할때 저지르는 실수입니다. 함수는 선언할 때 생성이 됩니다. 그러므로 내부의 함수에서는 i를 끝까지 참조합니다. 그러므로  모두 클릭을 했을 때 5라는 메세지만 보이게 됩니다. 이는 클로저를 사용하여 해결할 수 있습니다.
 
 ```jsx
-for (var i = 0; i < 5; i++) {
-  (function(j) {
-    document.querySelector("#target" + j).onclick = function() {
-		alert(j);
-	}
-  })(i);
-}
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="target0">Click Me 0</button>
+  <button id="target1">Click Me 1</button>
+  <button id="target2">Click Me 2</button>
+  <button id="target3">Click Me 3</button>
+  <button id="target4">Click Me 4</button>
+
+  <script>
+    for (var i = 0; i < 5; i++) {
+      (function(j) {
+        document.querySelector("#target" + j).onclick = function() {
+        alert(j);
+      }
+    })(i);
+    }
+  </script>
+</body>
+</html>
 ```
 
 ## References
