@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <button class="toggle">toggle</button>
+  <div class="box" style="width: 100px; height: 100px; background: red;"></div>
+
+  <script>
+    var box = document.querySelector('.box');
+    var toggleBtn = document.querySelector('.toggle');
+
+    // IIFE를 사용하여 클로저 생성
+    var toggle = (function () {
+      // 환경 프로퍼티
+      var isShow = false;
+
+      return function () {
+        box.style.display = isShow ? 'block' : 'none';
+        isShow = !isShow;
+      };
+    })();
+
+    // 이벤트 바인딩
+    toggleBtn.onclick = toggle;
+  </script>
+</body>
+
+</html>

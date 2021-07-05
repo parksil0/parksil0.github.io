@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="target0">Click Me 0</button>
+  <button id="target1">Click Me 1</button>
+  <button id="target2">Click Me 2</button>
+  <button id="target3">Click Me 3</button>
+  <button id="target4">Click Me 4</button>
+</body>
+<script>
+
+  // 모두 5가 출력 됨
+  // for(var i = 0; i < 5; i++) {
+  //   document.querySelector("#target" + i).onclick = function() {
+  //     alert(i);
+  //   }
+  // }
+
+  // 선언을 let으로 하여 해결
+  // for (let i = 0; i < 5; i++) {
+  //   document.querySelector("#target" + i).onclick = function () {
+  //     alert(i);
+  //   }
+  // }
+
+  // 클로저를 사용하여 해결
+  for (var i = 0; i < 5; i++) {
+    (function (j) {
+      document.querySelector("#target" + j).onclick = function () {
+        alert(j);
+      }
+    })(i);
+  }
+</script>
+</html>
