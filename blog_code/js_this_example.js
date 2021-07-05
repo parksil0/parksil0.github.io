@@ -1,3 +1,11 @@
+function foo() {
+  return this;
+}
+
+// console.log(foo()) // true
+console.log(this === module.exports);
+console.log(this === exports);
+
 class User { // 클래스 생성
   constructor(name) { // 생성자
     this.name = name;
