@@ -9,10 +9,10 @@
  * 전역변수 name과 지역 스코프 내에 동일한 name이라는 변수를 선언 했을 때의 결과 확인 
  */
 
-var name = 'Seal';
+let name = 'Seal';
 
 function changeName() {
-  var name = 'Slias';
+  let name = 'Slias';
   name = "Sil";
   console.log(name); // Sil
 }
@@ -25,7 +25,7 @@ console.log(name); // Seal
  * 지역 스코프 내에서 전역변수를 선언하는 게 아니라 변경을 했을 때 결과 확인
  */
 
-var name2 = 'Seal';
+let name2 = 'Seal';
 
 function changeName2() {
   name2 = "Sil";
@@ -41,7 +41,7 @@ console.log(name2); // Sil
  */
 
 function changeName() {
-  var name3 = 'Slias';
+  let name3 = 'Slias';
   name3 = "Sil";
   console.log(name3); // Sil
 }
