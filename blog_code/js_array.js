@@ -62,6 +62,17 @@ console.log(arr9); // [ 6, 8 ]
 let myName = '';
 ['S', 'e', 'a', 'l', ' ', 'P', 'a', 'r', 'k'].forEach((item) => {
   myName += item;
-})
+});
 
 console.log(myName);
+
+let arr10 = [];
+
+// 2차원 배열을 forEach() 메소드로 접근하는 방법.
+[[1, 2], [3, 4], [5, 6]].forEach((arr) => {
+  arr.forEach((item) => {
+    arr10.push(item ** 2);
+  })
+});
+
+console.log(arr10);
