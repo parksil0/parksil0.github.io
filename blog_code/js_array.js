@@ -76,3 +76,31 @@ let arr10 = [];
 });
 
 console.log(arr10);
+
+/**
+ * Array.indexOf()
+ * 메서드에서 지정된 요소(index)를 찾는다.
+ * 존재하면 인덱스 번호를, 존재하지 않는다면 -1를 리턴한다.
+ * 발견된 가장 최초의 인덱스 번호를 리턴한다.
+ */
+
+const arr11 = [7, 4, 3, 1, 2, 6, 3, 7, 2, 7, 1, 7];
+
+// 메서드 인자로 값을 입력하면 해당 값이 위치한 인덱스를 리턴한다.
+console.log(arr11.indexOf(4)); // 1
+
+// 두 번째 인자는 시작하려는 인덱스 번호이다.
+console.log(arr11.indexOf(7, 1));
+
+// indexOf() 메서드는 최초의 인덱스만 리턴하기 때문에, 찾으려는 인덱스가 최소 두 개 이상이라면 아래와 같은 로직을 사용해보는 것도 고민할 수 있다.
+let arr12 = [];
+const findIndex = 7;
+let index = arr11.indexOf(findIndex);
+
+while(index !== -1) {
+  arr12.push(index);
+  index = arr11.indexOf(findIndex, index+1);
+}
+
+console.log(arr12);
+
