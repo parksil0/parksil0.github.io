@@ -18,7 +18,7 @@ const arr4 = Array.from({ length: 3 }, (v, i) => i)
 console.log(arr4); // [ 0, 1, 2 ]
 
 /**
- * Array.prototype.sort()
+ * Array.sort()
  */
 
 const arr5 = [7, 3, 6, 4, 2, 8];
@@ -31,7 +31,7 @@ const arr7 = [1, 2, 3, 4, 5, 6, 7, 8].sort((v1, v2) => v1 - v2);
 console.log(arr7); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 
 /**
- * Array.prototype.filter()
+ * Array.filter()
  * 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환한다.
  * filter()는 호출되는 배열을 변화시키지(mutate) 않는다.
  */
@@ -53,7 +53,7 @@ const arr9 = [6, 4, 2, 8, 5, 1, 3].filter(greaterThanFive);
 console.log(arr9); // [ 6, 8 ]
 
 /**
- * Array.prototype.forEach()
+ * Array.forEach()
  * 주어진 함수를 배열 요소 각각에 대해 실행한다.
  * 또한 리턴값이 없고, 배열을 변형하지도 않는다.
  * forEach()는 조기에 종료가 불가능하다.
