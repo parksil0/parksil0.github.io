@@ -36,8 +36,14 @@ console.log(arr7); // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
  * filter()는 호출되는 배열을 변화시키지(mutate) 않는다.
  */
 
-const arr8 = ['dog', 'lion', 'tiger', 'cat', 'rabbit'].filter((name) => name.length > 3);
+const animalArr = ['dog', 'lion', 'tiger', 'cat', 'rabbit']
+
+const arr8 = animalArr.filter((name) => name.length > 3);
 console.log(arr8); // [ 'lion', 'tiger', 'rabbit' ]
+
+// Array.filter()는 호출되는 배열을 변화시키지 않는 이유는, 
+// 메서드 내에서 새로운 배열을 생성하여 조건이 true 일 때에만 새로 생성한 배열에 push()를 하기 때문이다.
+console.log(animalArr); // [ 'dog', 'lion', 'tiger', 'cat', 'rabbit' ]
 
 function searchKeyword(arr, keyword) {
   return arr.filter((item) => item.toLowerCase().indexOf(keyword) > -1);
