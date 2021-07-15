@@ -104,3 +104,15 @@ while(index !== -1) {
 
 console.log(arr12);
 
+/**
+ * Array.map()
+ * 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환한다.
+ * Array.filter()와 마찬가지로 원본 배열을 손상시키지 않는다.
+ * Array.filter()는 조건에 맞으면 리턴하고, Array.map()은 모두 각각 순회를 하여 계산을 하여 리턴한다.
+ */
+
+const arr13 = [7, 4, 3, 8, 2, 9, 1];
+const arr14 = arr13.map((num) => num ** 2);
+
+console.log(arr13); // [7, 4, 3, 8, 2, 9, 1]
+console.log(arr14); // [49, 16, 9, 64, 4, 81, 1]
